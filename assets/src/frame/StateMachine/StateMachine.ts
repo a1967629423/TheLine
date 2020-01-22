@@ -307,6 +307,9 @@ export module MSM {
                 //TODO:池化操作
             }
         }
+        stopAllCoroutine(){
+            this.Coroutines.length = 0;
+        }
         /**
          * 设置协同程序的运行速度
          * @param speed 1为标准速度值越大越快

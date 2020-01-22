@@ -1,3 +1,5 @@
+import Heap from "./Heap";
+
 export interface IObpool
 {
     unuse(...value);
@@ -10,16 +12,16 @@ export interface IOFPool<T> extends IObpool
 }
 
 export default class ObjectPool<T> {
-    __pool:T[]=[]
+    __pool:Heap<T>= new Heap()
     /**
      * false为弹出第一个true为弹出最后一个
      */
-    dir:boolean = false
+    dir:boolean = true
     /**
      * 
      * @param dir 弹出方向
      */
-    constructor(dir:boolean = false)
+    constructor(dir:boolean = true)
     {
         this.dir=dir
     }
@@ -112,7 +114,7 @@ export default class ObjectPool<T> {
         this.__pool.forEach(value=>{
             if(value['destroy'])value['destroy']();
         })
-        this.__pool=[]
+        this.__pool= new Heap()
     }
     static GlobalPush(val:any)
     {

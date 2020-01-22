@@ -1,6 +1,7 @@
 import { MSM } from "../StateMachine/StateMachine";
 import { MSMDsc } from "../StateMachine/StateDec";
 const {ccclass} = cc._decorator
+
 @MSMDsc.mStateMachine
 @ccclass
 export default class MachineTest extends MSM.StateMachine {
@@ -11,9 +12,13 @@ export default class MachineTest extends MSM.StateMachine {
     }
     async start(){
         await super.start();
-        setInterval(()=>{
-            this.input(1);
-        },1000);
+
+        this.startCoroutine_Auto((function*(){
+            while(true){
+                yield MSM.AwaitNextSecond.getInstance()
+                console.log('a')
+            }
+        })())
     }
 }
 @MSMDsc.mState(MachineTest)
