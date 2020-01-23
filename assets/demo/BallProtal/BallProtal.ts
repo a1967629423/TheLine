@@ -8,46 +8,52 @@ const {ccclass, property} = cc._decorator;
 @ccclass
 export default class BallProtal extends cc.Component {
     @property({type:[cc.Node]})
-    bolls:cc.Node[] = new Array(3)
+    balls:cc.Node[] = new Array(3)
     @property({type:cc.Integer,max:2})
     cursor:number = 0
-    get displayedBoll() {
-        return this.bolls[this.cursor]
+    get displayedBall() {
+        return this.balls[this.cursor]
     }
     // LIFE-CYCLE CALLBACKS:
 
     // onLoad () {}
     canvasWidth:number
+    canvasNode:cc.Node
     start () {
+        this.canvasNode = cc.Canvas.instance.node
         this.canvasWidth = cc.Canvas.instance.node.width
-        if(this.bolls.some((v)=>!v)){
+        if(this.balls.length !== 3){
+            console.error('length of balls  shoud be 3')
+            this.node.active = true;
+        }
+        if(this.balls.some((v)=>!v)){
             this.node.active = false;
         }
     }
     v:cc.Vec3 = new cc.Vec3();
     private next(){
         this.cursor++;
-        if(this.cursor>=this.bolls.length){
+        if(this.cursor>=this.balls.length){
             this.cursor = 0
         }
-        return this.displayedBoll;
+        return this.displayedBall;
     }
     private previous(){
         this.cursor--;
         if(this.cursor<=0){
-            this.cursor = this.bolls.length-1;
+            this.cursor = this.balls.length-1;
         }
-        return this.displayedBoll;
+        return this.displayedBall;
     }
     update () {
-        let displayed = this.displayedBoll;
-        if(displayed.position.x>this.canvasWidth/2){
+        let displayed = this.displayedBall;
+        if(displayed.position.x>this.canvasNode.width*(1-this.canvasNode.anchorX)/2){
             displayed = this.previous();
         }
         if(displayed.position.x<-this.canvasWidth/2){
             displayed = this.next();
         }
-        this.bolls.filter((v)=>v!==displayed).forEach((v,i)=>{
+        this.balls.filter((v)=>v!==displayed).forEach((v,i)=>{
             this.v.set(displayed.position)
             this.v.x += i?-this.canvasWidth:this.canvasWidth;
             v.setPosition(this.v)

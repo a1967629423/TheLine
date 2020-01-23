@@ -696,7 +696,7 @@
       "__id__": 7
     },
     "_enabled": true,
-    "bolls": [
+    "balls": [
       {
         "__id__": 8
       },
@@ -707,7 +707,7 @@
         "__id__": 12
       }
     ],
-    "cursor": 1,
+    "cursor": 0,
     "_id": "e7p3L1p9ZIGK0lccUhiAjC"
   },
   {
@@ -719,6 +719,7 @@
     },
     "_enabled": true,
     "speed": 100,
+    "moveType": 0,
     "_id": "55f6qMsitN+6f6w4jEE5HD"
   },
   {
@@ -761,8 +762,8 @@
     "_isAbsBottom": true,
     "_isAbsHorizontalCenter": true,
     "_isAbsVerticalCenter": true,
-    "_originalWidth": 0,
-    "_originalHeight": 0,
+    "_originalWidth": 640,
+    "_originalHeight": 960,
     "_id": "29zXboiXFBKoIV4PQ2liTe"
   }
 ]

@@ -1,22 +1,27 @@
 import { MSM } from "../StateMachine/StateMachine";
 import { MSMDsc } from "../StateMachine/StateDec";
-const {ccclass} = cc._decorator
+const {ccclass,property} = cc._decorator
 
 @MSMDsc.mStateMachine
 @ccclass
 export default class MachineTest extends MSM.StateMachine {
     testNumber:number = 0;
+    @property()
+    time:number = 1;
+    @property()
+    info:string = 'hello'
     @MSMDsc.mSyncFunc
     input(i:number){
         console.log(i)
     }
     async start(){
         await super.start();
-
+        let _baseTime = this.time;
+        let _outputInfo = this.info;
         this.startCoroutine_Auto((function*(){
             while(true){
-                yield MSM.AwaitNextSecond.getInstance()
-                console.log('a')
+                yield MSM.AwaitNextSecond.getInstance(_baseTime+Math.random())
+                console.log(_outputInfo)
             }
         })())
     }
