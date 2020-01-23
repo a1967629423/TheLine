@@ -50,7 +50,7 @@ export default class BallProtal extends cc.Component {
         if(displayed.position.x>this.canvasNode.width*(1-this.canvasNode.anchorX)/2){
             displayed = this.previous();
         }
-        if(displayed.position.x<-this.canvasWidth/2){
+        if(displayed.position.x<-this.canvasNode.width*(this.canvasNode.anchorX)/2){
             displayed = this.next();
         }
         this.balls.filter((v)=>v!==displayed).forEach((v,i)=>{
