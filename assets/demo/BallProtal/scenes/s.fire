@@ -719,7 +719,7 @@
     },
     "_enabled": true,
     "speed": 10,
-    "moveType": 1,
+    "moveType": 0,
     "_id": "55dLYEBPBAbKwWdQpm0vJC"
   },
   {
