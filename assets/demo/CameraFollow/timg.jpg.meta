@@ -6,14 +6,14 @@
   "filterMode": "bilinear",
   "premultiplyAlpha": false,
   "genMipmaps": false,
-  "packable": true,
+  "packable": false,
   "width": 591,
   "height": 1023,
   "platformSettings": {},
   "subMetas": {
     "timg": {
       "ver": "1.0.4",
-      "uuid": "1ffcc9e8-7c74-4dca-a1ef-d9a72eafac41",
+      "uuid": "4763069e-561d-4c35-8610-3051b967d3fc",
       "rawTextureUuid": "6a5edd48-8c60-4400-9458-15c420229f31",
       "trimType": "auto",
       "trimThreshold": 1,

@@ -1,0 +1,17 @@
+{
+  "__type__": "cc.Material",
+  "_name": "CanMoved",
+  "_objFlags": 0,
+  "_native": "",
+  "_effectAsset": {
+    "__uuid__": "cb91c7eb-2a61-48de-ad19-1db7fa4b767f"
+  },
+  "_techniqueIndex": 0,
+  "_techniqueData": {
+    "0": {
+      "defines": {
+        "USE_TEXTURE": true
+      }
+    }
+  }
+}
