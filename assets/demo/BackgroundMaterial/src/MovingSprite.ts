@@ -2,7 +2,7 @@
 const {ccclass, property} = cc._decorator;
 
 @ccclass
-export default class CanMovedSprite extends cc.Sprite {
+export default class MovingSprite extends cc.Sprite {
     @property(cc.Vec2)
     offset:cc.Vec2 = new cc.Vec2();
     @property(cc.Vec2)

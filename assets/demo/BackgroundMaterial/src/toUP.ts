@@ -1,10 +1,10 @@
-import CanMovedSprite from "./CanMovedSprite";
+import MovingSprite from "./MovingSprite";
 
 const {ccclass, property,requireComponent,inspector} = cc._decorator;
 
 @ccclass
-@requireComponent(CanMovedSprite)
-export default class NewClass extends cc.Component {
+@requireComponent(MovingSprite)
+export default class toUP extends cc.Component {
     @property()
     speed:number = 100;
 
@@ -12,9 +12,9 @@ export default class NewClass extends cc.Component {
 
     // onLoad () {}
     offsetY:number = 0;
-    canMoved:CanMovedSprite
+    canMoved:MovingSprite
     start () {
-        this.canMoved = this.getComponent(CanMovedSprite)
+        this.canMoved = this.getComponent(MovingSprite)
     }
 
     update (dt) {
