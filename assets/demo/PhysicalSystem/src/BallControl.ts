@@ -18,8 +18,7 @@ export default class DemoBallControll extends cc.Component {
         this.physical = this.getComponent(PhysicalComponent)
     }
     onEnable(){
-        cc.Canvas.instance.node.on(cc.Node.EventType.MOUSE_DOWN,(e)=>{
-            console.log('a')
+        cc.Canvas.instance.node.on(cc.Node.EventType.TOUCH_START,(e)=>{
             this.physical.applyImpulse(this.upVec2)
         })
     }

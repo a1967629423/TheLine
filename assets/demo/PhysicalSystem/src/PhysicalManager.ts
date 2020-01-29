@@ -40,10 +40,11 @@ export default class PhysicalManager extends cc.Component {
         this._cameraWorldPosition = this.camera.node.parent.convertToWorldSpaceAR(this.camera.node.position)
         this.camera._virtualPosition.x = this._cameraWorldPosition.x;
         this.camera._virtualPosition.y = this._cameraWorldPosition.y;
+        this._physicalNodes.push(this.camera)
     }
     update(dt:number){
         //并不是最优的方法
-        [this.camera,...this._physicalNodes].forEach((pNode)=>{
+        this._physicalNodes.forEach((pNode)=>{
             this._aVelocity.set(cc.Vec2.ZERO)
             if(pNode.affectedByGravity){
                 this._aVelocity.y-=this.gravity;
@@ -67,7 +68,8 @@ export default class PhysicalManager extends cc.Component {
     }
     registerPhysicalNode(physicalNode:PhysicalComponent){
         // 实现的不太好
-        if(this.enabled&&physicalNode !== this.camera){
+        if(this.enabled){
+            if(this._physicalNodes.some((v)=>v===physicalNode))return;
             this._physicalNodes.push(physicalNode)
             let pNodep = physicalNode.node.parent.convertToWorldSpaceAR(physicalNode.node.position).subtract(this._cameraWorldPosition)
             physicalNode._virtualPosition.x = pNodep.x;
